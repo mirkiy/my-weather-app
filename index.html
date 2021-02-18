@@ -10,40 +10,52 @@
       integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
       crossorigin="anonymous"
     />
-    <title>vanilla-weather-app</title>
     <link rel="stylesheet" href="src/style.css" />
+    <title>vanilla-weather-app</title>
   </head>
   <body>
     <div class="container">
-      <div class="weatherApp">
-        <h1>London</h1>
-        <ul>
-          <li>Tuesday 19:00</li>
-          <li>Clear</li>
-        </ul>
-        <div class="row">
-          <div class="col-6">
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-              alt="Clear"
-            />
-            7 °C | °F
-          </div>
-          <div class="col-6">
+      <div class="weatherAppWrapper">
+        <div class="weatherApp">
+          <div class="overview">
+            <h1>London</h1>
             <ul>
-              <li>Precitipation: 0%</li>
-              <li>Humidity: 73%</li>
-              <li>Wind: 5 km/h</li>
+              <li>Tuesday 19:00</li>
+              <li>Clear</li>
             </ul>
           </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="clearfix weather-temperature">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+                  alt="Clear"
+                  class="float-start"
+                />
+                <div class="float-left">
+                  <strong>9</strong
+                  ><span class="units">°C | <a href="#">°F</a></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li>Precitipation: 0%</li>
+                <li>Humidity: 73%</li>
+                <li>Wind: 5 km/h</li>
+              </ul>
+            </div>
+          </div>
         </div>
+        <small>
+          <a
+            href="https://github.com/mirkiy/vanilla-weather-app"
+            target="_blank"
+            >Open-source code</a
+          >
+          by Mirka Zacharova
+        </small>
       </div>
-      <small>
-        <a href="https://github.com/mirkiy/vanilla-weather-app" target="_blank"
-          >Open-source code</a
-        >
-        by Mirka Zacharova
-      </small>
     </div>
     <script src="src/app.js"></script>
   </body>
