@@ -10,6 +10,7 @@
       integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
     <title>vanilla-weather-app</title>
   </head>
@@ -18,10 +19,10 @@
       <div class="weatherAppWrapper">
         <div class="weatherApp">
           <div class="overview">
-            <h1>London</h1>
+            <h1 id="city"></h1>
             <ul>
-              <li>Tuesday 19:00</li>
-              <li>Clear</li>
+              <li>Last updated: <span id="date"></span></li>
+              <li id="description"></li>
             </ul>
           </div>
           <div class="row">
@@ -33,16 +34,15 @@
                   class="float-start"
                 />
                 <div class="float-left">
-                  <strong>9</strong
+                  <strong id="temperature"></strong
                   ><span class="units">°C | <a href="#">°F</a></span>
                 </div>
               </div>
             </div>
             <div class="col-6">
               <ul>
-                <li>Precitipation: 0%</li>
-                <li>Humidity: 73%</li>
-                <li>Wind: 5 km/h</li>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind: <span id="wind"></span> km/h</li>
               </ul>
             </div>
           </div>
