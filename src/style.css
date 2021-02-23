@@ -26,7 +26,13 @@ li {
 li:first-letter {
   text-transform: capitalize;
 }
-
+#city-current {
+  margin: 15px 5px;
+  width: 25px;
+  height: 25px;
+  color: peru;
+  fill: currentColor;
+}
 .app-wrapper {
   max-width: 600px;
   margin: 30px auto;
@@ -34,8 +40,17 @@ li:first-letter {
 .app {
   padding: 20px;
   border: 1px solid #dadde1;
-  border-radius: 5px;
-  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  border-radius: 10px;
+  box-shadow: 3px 1px 12px#929191;
+  background-image: linear-gradient(to top, #d4d7f8 0%, white 100%);
+}
+.btn-light {
+  border: 0.8px rgb(199, 206, 207) solid;
+  color: #878787;
+}
+.btn-light:hover {
+  color: #ffffff;
+  background-color: rgba(212, 225, 233, 0.952);
 }
 .overview {
   margin-bottom: 20px;
