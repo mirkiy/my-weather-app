@@ -48,6 +48,10 @@ li:first-letter {
   box-shadow: 3px 1px 12px#929191;
   background-image: linear-gradient(to top, #d4d7f8 0%, white 100%);
 }
+.app:hover {
+  box-shadow: 10px 5px 10px rgb(177, 150, 116);
+  transition: all 1s;
+}
 .btn-light {
   border: 0.8px rgb(199, 206, 207) solid;
   color: #878787;
