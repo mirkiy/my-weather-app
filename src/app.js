@@ -58,6 +58,26 @@ function showTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+// function showForecast(response) {
+//   let forecastElement = document.querySelector("#forecast");
+//   forecastElement.innerHTML = null;
+//   let forecast = null;
+
+//   for (let index = 0; index < 6; index++) {
+//     forecast = response.data.list[index];
+//     forecastElement.innerHTML += `<div class="col-2">
+//               <h3>${formatHours(forecast.dt * 1000)}</h3>
+//               <img src="https://openweathermap.org/img/wn/${
+//                 forecast.weather[0].icon
+//               }@2x.png" alt="" />
+//               <div class="weather-forecast-temperature">
+//                 <strong>${Math.round(
+//                   forecast.main.temp_max
+//                 )}°</strong>${Math.round(forecast.main.temp_min)}°
+//               </div>`;
+//   }
+// }
+
 function showForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = null;
@@ -71,9 +91,11 @@ function showForecast(response) {
                 forecast.weather[0].icon
               }@2x.png" alt="" />
               <div class="weather-forecast-temperature">
-                <strong>${Math.round(
+                <strong><span class="forecast-max">${Math.round(
                   forecast.main.temp_max
-                )}°</strong>${Math.round(forecast.main.temp_min)}°
+                )}</span>°</strong><span class="forecast-min">${Math.round(
+      forecast.main.temp_min
+    )}</span>°
               </div>`;
   }
 }
@@ -89,8 +111,21 @@ function search(city) {
 }
 function handleSubmit(event) {
   event.preventDefault();
+  // let cityInputElement = document.querySelector("#city-input");
+  // search(cityInputElement.value);
+
+  //
+  celsiusLink.removeEventListener("click", showCelsiusTemperature);
+  fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   let cityInputElement = document.querySelector("#city-input");
-  search(cityInputElement.value);
+  if (cityInputElement.value) {
+    search(cityInputElement.value);
+  } else {
+    alert(`Please enter a city to submit your search.`);
+  }
+  //
 }
 function showCurrentCity(position) {
   let latitude = position.coords.latitude;
@@ -117,6 +152,22 @@ function showFahrenheitTemperature(event) {
   fahrenheitLink.classList.add("active");
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+
+  //
+  let forecastMax = document.querySelectorAll(".forecast-max");
+  forecastMax.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+  });
+  let forecastMin = document.querySelectorAll(".forecast-min");
+  forecastMin.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+  });
+
+  celsiusLink.addEventListener("click", showCelsiusTemperature);
+  fahrenheitLink.removeEventListener("click", showFahrenheitTemperature);
+  //
 }
 
 function showCelsiusTemperature(event) {
@@ -125,6 +176,20 @@ function showCelsiusTemperature(event) {
   fahrenheitLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+
+  //
+  let forecastMax = document.querySelectorAll(".forecast-max");
+  forecastMax.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
+  });
+  let forecastMin = document.querySelectorAll(".forecast-min");
+  forecastMin.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
+  });
+  celsiusLink.removeEventListener("click", showCelsiusTemperature);
+  fahrenheitLink.addEventListener("click", showFahrenheitTemperature); //
 }
 
 celsiusTemperature = null;
