@@ -46,7 +46,13 @@ li:first-letter {
   border: 1px solid #dadde1;
   border-radius: 10px;
   box-shadow: 3px 1px 12px#929191;
-  background-image: linear-gradient(to top, #d4d7f8 0%, white 100%);
+  background-image: url("./images/JS-weather.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: fixed;
+
+  /* background-image: linear-gradient(to top, #d4d7f8 0%, white 100%); */
 }
 .app:hover {
   box-shadow: 10px 5px 10px rgb(177, 150, 116);
@@ -90,7 +96,8 @@ li:first-letter {
   margin-top: 10px;
 }
 .weather-forecast h3 {
-  color: #878787;
+  /* color: #878787; */
+
   font-size: 14px;
   font-weight: 400;
   text-align: center;
@@ -106,7 +113,7 @@ li:first-letter {
 }
 .weather-forecast-temperature {
   text-align: center;
-  color: rgb(135, 135, 135);
+  /* color: rgb(135, 135, 135); */
   font-size: 13px;
   font-weight: 400;
   height: auto;
